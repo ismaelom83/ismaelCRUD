@@ -11,8 +11,8 @@ public class UController {
 		return "index";
 	}
 	
-	@GetMapping("/formulario")
+	@GetMapping("/vista")
 	public String getFormulario() {
-		return "formulario";
+		return "formulario/vista";
 	}
 }
