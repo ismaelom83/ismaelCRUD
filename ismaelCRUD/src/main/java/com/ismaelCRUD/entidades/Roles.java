@@ -12,20 +12,20 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Roles implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3697928620197199043L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="native")
-	@GenericGenerator(name="native", strategy="native")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
-	
+
 	@Column
 	private String nombre;
-	
+
 	@Column
 	private String descripcion;
 
@@ -52,8 +52,6 @@ public class Roles implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -96,8 +94,4 @@ public class Roles implements Serializable {
 	public String toString() {
 		return "Roles [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
 	}
-	
-	
-	
-	
 }
