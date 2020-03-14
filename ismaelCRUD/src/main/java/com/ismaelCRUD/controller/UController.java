@@ -1,10 +1,22 @@
 package com.ismaelCRUD.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.ismaelCRUD.entidades.Usuario;
+import com.ismaelCRUD.repositorio.RepositorioRoles;
+import com.ismaelCRUD.repositorio.serevicio.ServicioUsuario;
 
 @Controller
 public class UController {
+	
+	@Autowired
+	RepositorioRoles roleRepository;
+	
+	@Autowired 
+	ServicioUsuario servicioUsuario;
 
 	@GetMapping("/index")
 	public String index() {
@@ -12,7 +24,11 @@ public class UController {
 	}
 	
 	@GetMapping("/vista")
-	public String getFormulario() {
+	public String getFormulario(Model model) {
+		model.addAttribute("formulario", new Usuario());
+		model.addAttribute("roles",roleRepository.findAll());
+		model.addAttribute("userList", servicioUsuario.getAllUsers());
+		model.addAttribute("listTab","active");
 		return "formulario/vista";
 	}
 }

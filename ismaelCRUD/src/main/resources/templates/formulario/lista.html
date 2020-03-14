@@ -11,14 +11,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>Ismsael</td>
-				<td>Heras</td>
-				<td>I.H.username</td>
-				<td>I.H.ismael@blog.com</td>
+			<tr th:each="usuario: ${userList}">
+				<!-- <th scope="row">1</th> -->
+				<td th:text="${usuario.id}"></td>
+				<td th:text="${usuario.nombre}"></td>
+				<td th:text="${usuario.apellidos}"></td>
+				<td th:text="${usuario.nombreusuario}"></td>
+				<td th:text="${usuario.email}"></td>
 				<td>
-					<a href="#"><i class="fas fa-edit"></i></a> | <a href="#"><i class="fas fa-user-times"></i></a>
+					<a href="#" th:href="@{'/editUser/'+ ${usuario.id}}"><i class="fas fa-edit"></i></a>
+					| <a href="#" th:onclick="'javascript:confirmDelete(\''+ ${usuario.id} +'\');'"><i class="fas fa-user-times"></i></a>
 				</td>
 			</tr>
 		</tbody>

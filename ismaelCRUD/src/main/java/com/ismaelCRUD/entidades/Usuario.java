@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class usuario implements Serializable {
+public class Usuario implements Serializable {
 
 	/**
 	 * 
@@ -49,8 +49,11 @@ public class usuario implements Serializable {
 		,inverseJoinColumns=@JoinColumn(name="role_id"))
 	private Set<Roles> roles;
 
+	public Usuario() {
+		super();
+	}
 
-	public usuario(long id) {
+	public Usuario(long id) {
 		super();
 		this.id = id;
 	}
@@ -163,7 +166,7 @@ public class usuario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		usuario other = (usuario) obj;
+		Usuario other = (Usuario) obj;
 		if (apellidos == null) {
 			if (other.apellidos != null)
 				return false;
