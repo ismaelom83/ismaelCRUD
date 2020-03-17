@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import javax.persistence.JoinColumn;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -30,25 +32,25 @@ public class Usuario implements Serializable {
 	@GenericGenerator(name="native",strategy="native")
 	private long id;
 	@Column
+
 	private String nombre;
 	@Column
+
 	private String apellidos;
 	@Column
+
 	private String email;
 	@Column
+
 	private String nombreusuario;
 	@Column
+
 	private String password;
 	@Transient
+
 	private String confirmacionPassword;
 
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name="user_roles"
-		,joinColumns=@JoinColumn(name="user_id")
-		,inverseJoinColumns=@JoinColumn(name="role_id"))
-	private Set<Roles> roles;
-
 	public Usuario() {
 		super();
 	}
@@ -129,18 +131,6 @@ public class Usuario implements Serializable {
 	}
 
 
-	public Set<Roles> getRoles() {
-		return roles;
-	}
-
-
-	public void setRoles(Set<Roles> roles) {
-		this.roles = roles;
-	}
-
-	
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -153,7 +143,6 @@ public class Usuario implements Serializable {
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((nombreusuario == null) ? 0 : nombreusuario.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		return result;
 	}
 
@@ -199,11 +188,6 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (roles == null) {
-			if (other.roles != null)
-				return false;
-		} else if (!roles.equals(other.roles))
-			return false;
 		return true;
 	}
 
@@ -212,7 +196,7 @@ public class Usuario implements Serializable {
 	public String toString() {
 		return "usuario [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
 				+ ", nombreusuario=" + nombreusuario + ", password=" + password + ", confirmacionPassword="
-				+ confirmacionPassword + ", roles=" + roles + "]";
+				+ confirmacionPassword + "]";
 	}
 	
 	

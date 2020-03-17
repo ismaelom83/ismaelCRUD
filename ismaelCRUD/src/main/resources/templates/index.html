@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+     <meta charset="UTF-8">
     <title>Mi primer Login</title>
 
     <!--JQUERY-->
@@ -20,27 +21,23 @@
 <body>
     <div class="modal-dialog text-center">
         <div class="col-sm-8 main-section">
-            <div class="modal-content">
-                <div class="col-12 user-img">
-                    <img src="static/img/user.png" th:src="@{/img/user2.jpg}"/>
-                </div>
+            <div class="modal-content mb-3 p-5">
+               <h1 class="p-3 log-in">Log In</h1>
                 <form class="col-12" th:action="@{/login}" method="get">
                     <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nombre de usuario" name="username"/>
+                        <input type="text" class="form-control" placeholder="Nombre" name="username"/>
                     </div>
                     <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Contrasena" name="password"/>
+                        <input type="password" class="form-control" placeholder="password" name="password"/>
                     </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                    <button type="submit" class="btn btn-primary"><i></i>  Ingresar </button>
                 </form>
-                <div class="col-12 forgot">
-                    <a href="#">Recordar contrasena?</a>
-                </div>
+              
                 <div th:if="${param.error}" class="alert alert-danger" role="alert">
-		            Invalid username and password.
+		           password o nombre incorrectos.
 		        </div>
 		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
-		            You have been logged out.
+		            Has sido desconectado.
 		        </div>
             </div>
         </div>
