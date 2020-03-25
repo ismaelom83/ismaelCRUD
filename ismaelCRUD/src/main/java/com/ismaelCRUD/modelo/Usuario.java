@@ -1,20 +1,12 @@
-package com.ismaelCRUD.entidades;
+package com.ismaelCRUD.modelo;
 
 import java.io.Serializable;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import javax.persistence.JoinColumn;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -51,6 +43,13 @@ public class Usuario implements Serializable {
 	private String confirmacionPassword;
 
 	
+	
+	public Usuario(String nombreusuario, String password) {
+		super();
+		this.nombreusuario = nombreusuario;
+		this.password = password;
+	}
+
 	public Usuario() {
 		super();
 	}
@@ -61,6 +60,7 @@ public class Usuario implements Serializable {
 	}
 
 
+	
 	public long getId() {
 		return id;
 	}

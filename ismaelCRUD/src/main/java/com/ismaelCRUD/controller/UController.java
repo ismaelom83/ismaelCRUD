@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.ismaelCRUD.entidades.Usuario;
-import com.ismaelCRUD.repositorio.serevicio.ServicioUsuario;
+import com.ismaelCRUD.modelo.Usuario;
+import com.ismaelCRUD.servicio.ServicioUsuario;
 
 @Controller
 public class UController {

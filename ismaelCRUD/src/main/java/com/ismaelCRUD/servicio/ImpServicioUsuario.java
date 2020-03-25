@@ -1,9 +1,9 @@
-package com.ismaelCRUD.repositorio.serevicio;
+package com.ismaelCRUD.servicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ismaelCRUD.entidades.Usuario;
+import com.ismaelCRUD.modelo.Usuario;
 import com.ismaelCRUD.repositorio.RepositorioUsuario;
 
 @Service
