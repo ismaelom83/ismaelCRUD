@@ -44,4 +44,10 @@ button{
     width: 60%;
     margin: 5px 0 25px;
 }
-
+.page-footer{
+   position: absolute;
+   left:0px;
+   bottom:0px;
+   height:120px;
+   width:100%;
+}

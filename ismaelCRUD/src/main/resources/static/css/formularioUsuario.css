@@ -2,6 +2,14 @@ body{
     background: url(../img/puerta84.jpg) no-repeat center center fixed;
     background-size: cover;
 }
+.page-footer{
+   position: absolute;
+   left:0px;
+   bottom:0px;
+   height:120px;
+   width:100%;
+   margin-top: 30px;
+}
 
 .table{
 background: whitesmoke;
@@ -20,7 +28,7 @@ background: whitesmoke;
     margin-top:5%;
 }
 .card{
-	opacity: .85;
+	opacity: .90;
 }
 
 label{
