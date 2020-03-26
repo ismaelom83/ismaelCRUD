@@ -17,5 +17,4 @@ public class ImpServicioUsuario implements ServicioUsuario{
 		
 		return repository.findAll();
 	}
-
 }

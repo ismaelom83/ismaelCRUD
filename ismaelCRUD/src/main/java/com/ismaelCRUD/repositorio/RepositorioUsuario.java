@@ -2,8 +2,8 @@ package com.ismaelCRUD.repositorio;
 
 
 
-import java.util.Optional;
 
+import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +16,5 @@ import com.ismaelCRUD.modelo.Usuario;
 public interface RepositorioUsuario extends CrudRepository<Usuario, Long>{
 	
 	//metodo implementado de la clase crudReporitory que es como si nos devolviera una consulta sql del nombre del usuario(este metodo lo utilizaremos luego en el login de usuario)
-	public Optional<Usuario> findByUsername(String nombreusuario);
-	
+	public Optional<Usuario> findBynombreusuario(String nombreusuario);
 }

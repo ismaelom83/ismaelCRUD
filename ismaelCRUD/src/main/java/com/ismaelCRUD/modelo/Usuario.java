@@ -42,13 +42,7 @@ public class Usuario implements Serializable {
 
 	private String confirmacionPassword;
 
-	
-	
-	public Usuario(String nombreusuario, String password) {
-		super();
-		this.nombreusuario = nombreusuario;
-		this.password = password;
-	}
+
 
 	public Usuario() {
 		super();

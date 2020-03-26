@@ -14,7 +14,7 @@ public class UController {
 	@Autowired 
 	ServicioUsuario servicioUsuario;
 
-	@GetMapping("/index")
+	@GetMapping({"/","index"})
 	public String index() {
 		return "index";
 	}

@@ -22,9 +22,9 @@
         <div class="col-sm-8 main-section">
             <div class="modal-content mb-3 p-5">
                <h1 class="p-3 log-in">Log In</h1>
-                <form class="col-12" th:action="@{/login}" method="get">
+                <form class="col-12" th:action="@{/index}" method="POST">
                     <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nombre" name="username"/>
+                        <input type="text" class="form-control" placeholder="NombreUsuario" name="nombreusuario"/>
                     </div>
                     <div class="form-group" id="contrasena-group">
                         <input type="password" class="form-control" placeholder="password" name="password"/>
