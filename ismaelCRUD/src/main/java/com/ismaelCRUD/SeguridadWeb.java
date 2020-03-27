@@ -46,7 +46,13 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter{
             .failureUrl("/index?error=verdad")
             //estos parametros se corrsponden a  los campos name de nuestro formulario de login
             .usernameParameter("nombreusuario")
-            .passwordParameter("password");
+            .passwordParameter("password")
+            //y con esta ultima instruccion le decimos que cuando pulsemos el logout nos cierre la sesion y nos redigira al login
+            .and()
+            .csrf().disable()
+        .logout()
+            .permitAll()
+            .logoutSuccessUrl("/index?logout");
     }
 	
 	//clase de spring security para descifrar o cifrar la contraseña (de momento la he cifrado desde su pagina web https://www.dailycred.com/article/bcrypt-calculator

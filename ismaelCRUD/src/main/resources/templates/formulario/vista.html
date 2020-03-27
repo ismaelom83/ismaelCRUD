@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	 <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<title>Informacion Del Usuario y Formulario</title>
 
 
@@ -22,14 +22,15 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
 	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-	
-	<link rel="stylesheet" type="text/css" href="static/css/formularioUsuario.css" th:href="@{/css/formularioUsuario.css}">
+
+	<link rel="stylesheet" type="text/css" href="static/css/formularioUsuario.css"
+		th:href="@{/css/formularioUsuario.css}">
 	<!-- DATA TABLE -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-<!-- Funcion sacada de la libreria de database para realizar paginaciones y filtrado de datos-->
+	<!-- Funcion sacada de la libreria de database para realizar paginaciones y filtrado de datos-->
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$('#userList').DataTable();
@@ -40,119 +41,105 @@
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+			<a class="navbar-brand" href="#">IsmaelCrud</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link" href="#" th:href="@{/logout}"><span>logout</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" th:classappend="${listTab}" id="list-tab" data-toggle="tab"
+							href="#list" role="tab" aria-controls="list" aria-selected="false">Lista De Usuarios</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:classappend="${formTab}" id="form-tab" data-toggle="tab" href="#form"
+							role="tab" aria-controls="form" aria-selected="true">Formulario Para Usuarios</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 	</header>
 	<main>
-	<div class="container">
-		<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
-			<div class="tab-content" id="myTabContent">
-				<ul class="nav nav-tabs justify-content-start">
-				<li class="nav-item">
-					<a class="nav-link active" th:classappend="${listTab}" id="list-tab" data-toggle="tab" href="#list" role="tab"
-						aria-controls="list" aria-selected="false">Lista De Usuarios</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" th:classappend="${formTab}" id="form-tab" data-toggle="tab" href="#form" role="tab" aria-controls="form"
-						aria-selected="true">Formulario Para Usuarios</a>
-				</li>
-			</ul>
-				<div class="tab-pane fade show " th:classappend="${listTab}" id="list" role="tabpanel" aria-labelledby="list-tab">
-					<div class="card bg-dark text-light" >
-						<div class="card-header">
-							<h4>Lista De Usuarios</h4>
-						</div>
-						<div class="card-body ">
-							<div th:include="formulario/lista.html" th:remove="tag"></div>
+		<div class="container">
+			<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show " th:classappend="${listTab}" id="list" role="tabpanel"
+						aria-labelledby="list-tab">
+						<div class="card bg-dark text-light">
+							<div class="card-header">
+								<h4>Lista De Usuarios</h4>
+							</div>
+							<div class="card-body ">
+								<div th:include="formulario/lista.html" th:remove="tag"></div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="tab-pane fade show miformulario1" th:classappend="${formTab}" id="form" role="tabpanel" aria-labelledby="form-tab">
-					<div class="card bg-dark text-light" >
-						<div class="card-header">
-							<h4>Informacion Del Usuario</h4>
-						</div>
-						<div class="card-body formulariomio">
-							<div th:include="formulario/formulario.html" th:remove="tag"></div>
+					<div class="tab-pane fade show miformulario1" th:classappend="${formTab}" id="form" role="tabpanel"
+						aria-labelledby="form-tab">
+						<div class="card bg-dark text-light">
+							<div class="card-header">
+								<h4>Informacion Del Usuario</h4>
+							</div>
+							<div class="card-body formulariomio">
+								<div th:include="formulario/formulario.html" th:remove="tag"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</main>
-<!-- Footer -->
-<footer class="page-footer font-small  bg-dark pt-4 sticky-bottom ">
+	<!-- Footer -->
+	<footer class="page-footer font-small  bg-dark pt-4 sticky-bottom ">
 
-  <!-- Footer Elements -->
-  <div class="container">
+		<!-- Footer Elements -->
+		<div class="container">
 
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a class="btn-floating btn-fb mx-1">
-          <i class="fab fa-facebook-f"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-tw mx-1">
-          <i class="fab fa-twitter"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-gplus mx-1">
-          <i class="fab fa-google-plus-g"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-li mx-1">
-          <i class="fab fa-linkedin-in"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-dribbble mx-1">
-          <i class="fab fa-dribbble"> </i>
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
+			<!-- Social buttons -->
+			<ul class="list-unstyled list-inline text-center">
+				<li class="list-inline-item">
+					<a class="btn-floating btn-fb mx-1">
+						<i class="fab fa-facebook-f"> </i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="btn-floating btn-tw mx-1">
+						<i class="fab fa-twitter"> </i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="btn-floating btn-gplus mx-1">
+						<i class="fab fa-google-plus-g"> </i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="btn-floating btn-li mx-1">
+						<i class="fab fa-linkedin-in"> </i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a class="btn-floating btn-dribbble mx-1">
+						<i class="fab fa-dribbble"> </i>
+					</a>
+				</li>
+			</ul>
+			<!-- Social buttons -->
 
-  </div>
-  <!-- Footer Elements -->
+		</div>
+		<!-- Footer Elements -->
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="#"> Ismael Heras Salvador</a>
-  </div>
-  <!-- Copyright -->
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2020 Copyright:
+			<a href="#"> Ismael Heras Salvador</a>
+		</div>
+		<!-- Copyright -->
 
-</footer>
-<!-- Footer -->
+	</footer>
+	<!-- Footer -->
 </body>
+
 </html>

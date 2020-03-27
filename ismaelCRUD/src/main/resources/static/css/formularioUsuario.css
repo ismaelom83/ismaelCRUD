@@ -5,7 +5,14 @@ body{
 .page-footer{
    margin-top: 30px;
 }
-
+.navbar-nav {
+    padding: 5px;
+}
+.navbar-nav li{
+    padding: 3px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
 .table{
 background: whitesmoke;
 }
