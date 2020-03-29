@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -23,23 +26,29 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="native")
 	@GenericGenerator(name="native",strategy="native")
 	private long id;
+	
 	@Column
-
+	@NotBlank
+	@Size(min=5,max=8,message="Numero de caracteres invalido")
 	private String nombre;
+	
 	@Column
-
+	@NotBlank
 	private String apellidos;
+	
 	@Column
-
+	@NotBlank
 	private String email;
+	
 	@Column
-
+	@NotBlank
 	private String nombreusuario;
+
 	@Column
-
+	@NotBlank
 	private String password;
+	
 	@Transient
-
 	private String confirmacionPassword;
 
 
