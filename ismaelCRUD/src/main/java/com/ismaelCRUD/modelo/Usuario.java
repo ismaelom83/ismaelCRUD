@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.UniqueElements;
 
 @Entity
 public class Usuario implements Serializable {
@@ -18,28 +19,28 @@ public class Usuario implements Serializable {
 	/**
 	 * 
 	 */
-	
-	//entidad
+
+	// entidad
 	private static final long serialVersionUID = 6989612429797393220L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="native")
-	@GenericGenerator(name="native",strategy="native")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	@GenericGenerator(name = "native", strategy = "native")
 	private long id;
-	
+
 	@Column
 	@NotBlank
-	@Size(min=5,max=8,message="Numero de caracteres invalido")
+	@Size(min = 5, max = 8, message = "Numero de caracteres invalido")
 	private String nombre;
-	
+
 	@Column
 	@NotBlank
 	private String apellidos;
-	
+
 	@Column
 	@NotBlank
 	private String email;
-	
+
 	@Column
 	@NotBlank
 	private String nombreusuario;
@@ -47,11 +48,9 @@ public class Usuario implements Serializable {
 	@Column
 	@NotBlank
 	private String password;
-	
+
 	@Transient
 	private String confirmacionPassword;
-
-
 
 	public Usuario() {
 		super();
@@ -62,78 +61,61 @@ public class Usuario implements Serializable {
 		this.id = id;
 	}
 
-
-	
 	public long getId() {
 		return id;
 	}
-
 
 	public void setId(long id) {
 		this.id = id;
 	}
 
-
 	public String getNombre() {
 		return nombre;
 	}
-
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
 	public String getApellidos() {
 		return apellidos;
 	}
-
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public String getNombreusuario() {
 		return nombreusuario;
 	}
-
 
 	public void setNombreusuario(String nombreusuario) {
 		this.nombreusuario = nombreusuario;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
 	public String getConfirmacionPassword() {
 		return confirmacionPassword;
 	}
 
-
 	public void setConfirmacionPassword(String confirmacionPassword) {
 		this.confirmacionPassword = confirmacionPassword;
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -148,7 +130,6 @@ public class Usuario implements Serializable {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -194,14 +175,11 @@ public class Usuario implements Serializable {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "usuario [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
 				+ ", nombreusuario=" + nombreusuario + ", password=" + password + ", confirmacionPassword="
 				+ confirmacionPassword + "]";
 	}
-	
-	
-	
+
 }

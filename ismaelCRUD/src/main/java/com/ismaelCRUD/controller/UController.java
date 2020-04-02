@@ -25,34 +25,42 @@ public class UController {
 		return "index";
 	}
 
+	@GetMapping("/registro")
+	public String registro(Model modelo) {
+		modelo.addAttribute("formulario", new Usuario());
+		modelo.addAttribute("formTab", "active");
+		return "formulario/registro";
+	}
+
 	@GetMapping("/vista")
 	public String getFormulario(Model modelo) {
-		modelo.addAttribute("formulario", new Usuario());
+//		modelo.addAttribute("formulario", new Usuario());
 		modelo.addAttribute("userList", servicioUsuario.getAllUsers());
 		modelo.addAttribute("listTab", "active");
 		return "formulario/vista";
 	}
 
-	@PostMapping("/formulario")
+	@PostMapping("/registro")
 	public String crearUsuario(@Valid @ModelAttribute("formulario") Usuario usuario, BindingResult resultado,
 			ModelMap modelo) {
+		modelo.addAttribute("formulario",usuario);
+		modelo.addAttribute("registro",true);
 		if (resultado.hasErrors()) {
-			modelo.addAttribute("formulario", usuario);
+			modelo.addAttribute("formulario",usuario);
 			modelo.addAttribute("formTab", "active");
+		return "formulario/registro";
+		
 		} else {
 			try {
 				servicioUsuario.creacionUsuario(usuario);
-				modelo.addAttribute("formulario", new Usuario());
-				modelo.addAttribute("listTab", "active");
 			} catch (Exception e) {
-				modelo.addAttribute("mensajeError",e.getMessage());
-				modelo.addAttribute("formulario", usuario);
+				modelo.addAttribute("mensajeError", e.getMessage());
+				modelo.addAttribute("formulario",usuario);
 				modelo.addAttribute("formTab", "active");
-				modelo.addAttribute("userList", servicioUsuario.getAllUsers());
+				return "formulario/registro";
 			}
 		}
-		modelo.addAttribute("userList", servicioUsuario.getAllUsers());
-		return "formulario/vista";
+		return "index";
 
 	}
 }
