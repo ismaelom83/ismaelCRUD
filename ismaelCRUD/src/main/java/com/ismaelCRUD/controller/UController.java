@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ismaelCRUD.modelo.Usuario;
@@ -34,7 +35,7 @@ public class UController {
 
 	@GetMapping("/vista")
 	public String getFormulario(Model modelo) {
-//		modelo.addAttribute("formulario", new Usuario());
+		modelo.addAttribute("formulario", new Usuario());
 		modelo.addAttribute("userList", servicioUsuario.getAllUsers());
 		modelo.addAttribute("listTab", "active");
 		return "formulario/vista";
@@ -63,4 +64,62 @@ public class UController {
 		return "index";
 
 	}
+	
+	
+	@GetMapping("/editarUsuario/{id}")
+	public String getEditarUsuario(Model modelo, @PathVariable(name="id")Long id)throws Exception {
+		Usuario usuarioParaEditar =  servicioUsuario.getUsuarioById(id);
+		
+		modelo.addAttribute("formulario", usuarioParaEditar );
+		modelo.addAttribute("userList", servicioUsuario.getAllUsers());
+		modelo.addAttribute("formTab", "active");
+		modelo.addAttribute("modoEditar", "true");
+		return "formulario/vista";
+		
+	}
+	
+@PostMapping("/editarUsuario")	
+public String postEditarUsuario(@Valid @ModelAttribute("formulario") Usuario usuario, BindingResult resultado,
+		ModelMap modelo) {
+	if (resultado.hasErrors()) {
+		modelo.addAttribute("formulario",usuario);
+		modelo.addAttribute("formTab", "active");
+		modelo.addAttribute("modoEditar", "true");
+	} else {
+		try {
+			servicioUsuario.actualizarUsuario(usuario);
+			modelo.addAttribute("formulario", new Usuario());
+			modelo.addAttribute("listTab", "active");
+		} catch (Exception e) {
+			modelo.addAttribute("mensajeError", e.getMessage());
+			modelo.addAttribute("formulario",usuario);
+			modelo.addAttribute("formTab", "active");
+			modelo.addAttribute("userList", servicioUsuario.getAllUsers());
+			modelo.addAttribute("modoEditar", "true");
+			
+		}
+	}
+	modelo.addAttribute("userList", servicioUsuario.getAllUsers());
+	return "formulario/vista";
+	
 }
+
+@GetMapping("/editarUsuario/cancel")
+public String cancelarEditarUsuario(ModelMap modelo) {
+	return "redirect:/vista";
+}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

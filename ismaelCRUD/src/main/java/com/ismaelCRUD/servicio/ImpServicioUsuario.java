@@ -47,4 +47,40 @@ public class ImpServicioUsuario implements ServicioUsuario {
 		}
 		return usuario;
 	}
+
+	
+	@Override
+	public Usuario getUsuarioById(Long id) throws Exception {
+		
+		return repositorio.findById(id).orElseThrow(() -> new Exception("este usuario no existe"));
+	}
+
+	@Override
+	public Usuario actualizarUsuario(Usuario fromUsuario) throws Exception {
+		Usuario toUsuario = getUsuarioById(fromUsuario.getId());
+		mapeoUsuario(fromUsuario, toUsuario);
+		return repositorio.save(toUsuario);
+	}
+	
+	/**
+	 * 
+	 * @param from
+	 * @param to
+	 */
+	
+	protected void mapeoUsuario(Usuario from,Usuario to) {
+		to.setNombreusuario(from.getNombreusuario());
+		to.setNombre(from.getNombre());
+		to.setApellidos(from.getApellidos());
+		to.setEmail(from.getEmail());
+
+	}
 }
+
+
+
+
+
+
+
+

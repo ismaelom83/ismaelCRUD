@@ -19,8 +19,9 @@
 				<td th:text="${usuario.nombreusuario}"></td>
 				<td th:text="${usuario.email}"></td>
 				<td>
-					<a href="#"></a>
-					| <a href="#"></a>
+					 
+						<a href="#" th:href="@{'/editarUsuario/'+ ${usuario.id}}"><i class="fas fa-edit"></i></a>
+				
 				</td>
 			</tr>
 		</tbody>

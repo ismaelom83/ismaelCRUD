@@ -1,4 +1,7 @@
-<form class="form" id="formTab" role="form" autocomplete="off" th:object="${formulario}" method="POST" th:action="@{registro}">
+<form class="form" id="formTab" role="form" autocomplete="off" th:object="${formulario}" method="POST" th:action="${modoEditar} ?@{/editarUsuario} :@{/registro}">
+		<!--Es necesario para poder pasar la validacion del Model-->
+		<input class="form-control" type=hidden th:field="${formulario.id}"  th:if="${modoEditar}">
+	<input class="form-control" type=hidden th:field="${formulario.password}"  th:if="${modoEditar}">
 	<div class="form-group row">
 		<label class="col col-form-label form-control-label">Nombre</label><br>	
 			<input class="form-control" type="text" th:field="${formulario.nombre}" th:disabled="${disableFields}">
@@ -19,20 +22,20 @@
 			<input class="form-control" type="text" th:field="${formulario.nombreusuario}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('nombreusuario')}" th:errors="*{nombreusuario}">Name Error</div>
 	</div>
-	<div class="form-group row">
+	<div class="form-group row" th:if="${modoEditar==null or modoEditar==false}">
 		<label class="col col-form-label form-control-label">Password</label><br>
 			<input class="form-control" type="password" th:field="${formulario.password}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>			
 	</div>
-		<div class="form-group row">
+		<div class="form-group row" th:if="${modoEditar==null or modoEditar==false}">
 		<label class="col col-form-label form-control-label">ConfirmaPassword</label><br>
 			<input class="form-control" type="password" th:field="${formulario.confirmacionPassword}">
 			<div class="alert-danger" th:if="${#fields.hasErrors('confirmacionPassword')}" th:errors="*{confirmacionPassword}">Name Error</div>			
 	</div>
 	<div class="form-group row">
 		<div class="col-lg-12 text-center">
-			<input type="reset" class="btn btn-secondary" value="LimpiarCampos">
-			<input type="submit" class="btn btn-primary" value="Guardar Cambios">
+			<a class="btn btn-secondary"  th:href="@{'/editarUsuario/cancel'}">Cancelar</a>
+			<input type="submit" class="btn btn-primary" value="Guardar Cambios" th:value="${modoEditar}?'Guardar Usuario':'Crear Usuario'">
 		</div>
 	</div>
 	<div class="alert alert-danger text-center" th:if="${mensajeError}" th:text="${mensajeError}">Error MEssage</div>
