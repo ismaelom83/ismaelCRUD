@@ -75,6 +75,13 @@ public class ImpServicioUsuario implements ServicioUsuario {
 		to.setEmail(from.getEmail());
 
 	}
+
+	@Override
+	public void eliminarUusario(Long id) throws Exception {
+		Usuario usuario = getUsuarioById(id);
+		
+		repositorio.delete(usuario);
+	}
 }
 
 

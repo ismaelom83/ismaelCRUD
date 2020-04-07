@@ -44,19 +44,19 @@ public class UController {
 	@PostMapping("/registro")
 	public String crearUsuario(@Valid @ModelAttribute("formulario") Usuario usuario, BindingResult resultado,
 			ModelMap modelo) {
-		modelo.addAttribute("formulario",usuario);
-		modelo.addAttribute("registro",true);
+		modelo.addAttribute("formulario", usuario);
+		modelo.addAttribute("registro", true);
 		if (resultado.hasErrors()) {
-			modelo.addAttribute("formulario",usuario);
+			modelo.addAttribute("formulario", usuario);
 			modelo.addAttribute("formTab", "active");
-		return "formulario/registro";
-		
+			return "formulario/registro";
+
 		} else {
 			try {
 				servicioUsuario.creacionUsuario(usuario);
 			} catch (Exception e) {
 				modelo.addAttribute("mensajeError", e.getMessage());
-				modelo.addAttribute("formulario",usuario);
+				modelo.addAttribute("formulario", usuario);
 				modelo.addAttribute("formTab", "active");
 				return "formulario/registro";
 			}
@@ -64,56 +64,63 @@ public class UController {
 		return "index";
 
 	}
-	
-	
+
 	@GetMapping("/editarUsuario/{id}")
-	public String getEditarUsuario(Model modelo, @PathVariable(name="id")Long id)throws Exception {
-		Usuario usuarioParaEditar =  servicioUsuario.getUsuarioById(id);
-		
-		modelo.addAttribute("formulario", usuarioParaEditar );
+	public String getEditarUsuario(Model modelo, @PathVariable(name = "id") Long id) throws Exception {
+		Usuario usuarioParaEditar = servicioUsuario.getUsuarioById(id);
+
+		modelo.addAttribute("formulario", usuarioParaEditar);
 		modelo.addAttribute("userList", servicioUsuario.getAllUsers());
 		modelo.addAttribute("formTab", "active");
 		modelo.addAttribute("modoEditar", "true");
 		return "formulario/vista";
+
+	}
+
+	@PostMapping("/editarUsuario")
+	public String postEditarUsuario(@Valid @ModelAttribute("formulario") Usuario usuario, BindingResult resultado,
+			ModelMap modelo) {
+		if (resultado.hasErrors()) {
+			modelo.addAttribute("formulario", usuario);
+			modelo.addAttribute("formTab", "active");
+			modelo.addAttribute("modoEditar", "true");
+		} else {
+			try {
+				servicioUsuario.actualizarUsuario(usuario);
+				modelo.addAttribute("formulario", new Usuario());
+				modelo.addAttribute("listTab", "active");
+			} catch (Exception e) {
+				modelo.addAttribute("mensajeError", e.getMessage());
+				modelo.addAttribute("formulario", usuario);
+				modelo.addAttribute("formTab", "active");
+				modelo.addAttribute("userList", servicioUsuario.getAllUsers());
+				modelo.addAttribute("modoEditar", "true");
+
+			}
+		}
+		modelo.addAttribute("userList", servicioUsuario.getAllUsers());
+		return "formulario/vista";
+
+	}
+
+	@GetMapping("/editarUsuario/cancel")
+	public String cancelarEditarUsuario(ModelMap modelo) {
+		return "redirect:/vista";
+	}
+	
+	
+	@GetMapping("/eliminarUsuario/{id}")
+	public String eliminarUusario(Model modelo, @PathVariable(name = "id") Long id) {
+		try {
+			servicioUsuario.eliminarUusario(id);
+		} catch (Exception e) {
+			modelo.addAttribute("modalError", e.getMessage());
+		}
+		return "redirect:/vista";
 		
 	}
-	
-@PostMapping("/editarUsuario")	
-public String postEditarUsuario(@Valid @ModelAttribute("formulario") Usuario usuario, BindingResult resultado,
-		ModelMap modelo) {
-	if (resultado.hasErrors()) {
-		modelo.addAttribute("formulario",usuario);
-		modelo.addAttribute("formTab", "active");
-		modelo.addAttribute("modoEditar", "true");
-	} else {
-		try {
-			servicioUsuario.actualizarUsuario(usuario);
-			modelo.addAttribute("formulario", new Usuario());
-			modelo.addAttribute("listTab", "active");
-		} catch (Exception e) {
-			modelo.addAttribute("mensajeError", e.getMessage());
-			modelo.addAttribute("formulario",usuario);
-			modelo.addAttribute("formTab", "active");
-			modelo.addAttribute("userList", servicioUsuario.getAllUsers());
-			modelo.addAttribute("modoEditar", "true");
-			
-		}
-	}
-	modelo.addAttribute("userList", servicioUsuario.getAllUsers());
-	return "formulario/vista";
-	
+
 }
-
-@GetMapping("/editarUsuario/cancel")
-public String cancelarEditarUsuario(ModelMap modelo) {
-	return "redirect:/vista";
-}
-	
-}
-
-
-
-
 
 
 
