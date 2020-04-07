@@ -18,7 +18,8 @@
 </head>
 <body>
     <div class="wraper">
-        
+        <!--  --------------------------------nav---------------------------------------- -->
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">SPRING BOOT CRUD</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,11 +79,31 @@
                <a href="" class="btn btn-default btn-rounded mb-4"  th:href="@{registro}">SingUp</a>
             </div>
             </div>
-              <!--  --------------------------------registro---------------------------------------- -->
-
-<!-- ------------------------------------------------------------------------------------------------------------------------ -->
           </nav>
-        <section>section</section>
+
+          <!-- ----------------------------------------------section-------------------------- -->
+        <section>
+          <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">Spring Security</a>
+          <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">Spring Data</a>
+          <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">JPA</a>
+          <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">Hibernate</a>
+
+
+
+<div class="modal fade bd-example-modal-lg" id="springSecurity" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <h1>Spring Security </h1><hr>
+      <div class="">
+        <p>esta tecnologia la implementa spring boot para la seguridad de nuestra WEB si quieres saber mas <a href="https://spring.io/projects/spring-security" target="_blank">pincha en este enlace</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+        </section>
+
+        <!--  --------------------------------main---------------------------------------- -->
+
         <main>
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -123,9 +144,28 @@
                 </a>
               </div>
         </main>
-        <aside>aside</aside>
-        <footer>footer</footer>
+        <aside></aside>
+<!--  --------------------------------footer---------------------------------------- -->
+               <footer>
+           
+                <li>Condiciones de uso</li>
+                <li>Privacidad</li>
+                <li>Cookies</li>
+                <li>&copy;2020 Ismael Heras Salvador.Derechos Reservados</li>
+                <div class="icons">
+                    <img src="img/twitter.png" alt="">
+                    <img src="img/facebook.png" alt="">
+                    <img src="img/instagram.png" alt="">
+                    <img src="img/youtube.png" alt="">
+                </div>
+
+        </footer>
     </div>
+	<script type="text/javascript">
+function modalSpringSecurity(){
+	$('#springSecurity').modal('show');
+}
+</script>
 </body>
 </html>
 

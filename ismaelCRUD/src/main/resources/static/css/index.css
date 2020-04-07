@@ -1,5 +1,4 @@
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,7 +11,7 @@
 
 
 
-.wraper{
+.wraper {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
@@ -20,34 +19,65 @@
     grid-gap: 4px;
 }
 
-section{
-    background: #ef5350;
-}
 
-aside{
+aside {
     background: chartreuse;
 }
-footer{
-    background: #546e7a;
+
+footer {
+    grid-column: 1/-1;
+    grid-row: 3/-1;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    color: black;
+    align-items: center;
 }
 
-@media all and (min-width:640px){
+footer li {
+    display: inline-block;
+}
 
-    .wraper{
+.icons>img {
+    max-width: 42px;
+}
+
+.icons>img:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transform: scale(1.2);
+}
+
+@media all and (min-width:640px) {
+
+    .wraper {
         grid-template-columns: 4fr 1fr;
-        grid-template-rows: 10fr 8fr 74fr  8fr;
+        grid-template-rows: 10fr 8fr 74fr 8fr;
     }
-    nav{
-        grid-column: 1/-1;  
+
+    nav {
+        grid-column: 1/-1;
     }
-    section{
-        grid-column: 1/-1;  
+
+    section {
+        grid-column: 1/-1;
         grid-row: 2/3;
     }
-    main{
-        grid-column: 1/2;  
+
+    main {
+        grid-column: 1/2;
         grid-row: 3/4;
     }
+
+    /* estilo de modales */
+
+    a:link {
+        text-decoration: none;
+    }
+
     .carousel-item {
         height: 79vh;
         min-height: 300px;
@@ -56,80 +86,93 @@ footer{
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-      }
-    
-      .carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
-  outline: black;
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  
-  background-image: none;
-}
-      .carousel-control-next-icon:after
-      {
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        height: 100px;
+        width: 100px;
+        outline: black;
+        background-size: 100%, 100%;
+        border-radius: 50%;
+
+        background-image: none;
+    }
+
+    .carousel-control-next-icon:after {
         content: '>';
         font-size: 55px;
         color: black;
-      }
-      
-      .carousel-control-prev-icon:after {
+    }
+
+    .carousel-control-prev-icon:after {
         content: '<';
         font-size: 55px;
         color: black;
-      } 
-    aside{
-        grid-column: 2/-1;  
+    }
+
+    aside {
+        grid-column: 2/-1;
         grid-row: 3/4;
     }
-    footer{
-        grid-column: 1/-1;  
+
+    footer {
+        grid-column: 1/-1;
         grid-row: 4/5;
     }
-    
+
 }
 
-@media all and (min-width:1024px){
-    .wraper{
+@media all and (min-width:1024px) {
+    .wraper {
         grid-template-columns: .15fr .65fr .20fr;
         grid-template-rows: .1fr .8fr .1fr;
-        
+
     }
-    nav{
-        grid-column: 1/-1;  
+
+    nav {
+        grid-column: 1/-1;
         grid-row: 1/2;
         display: flex;
         flex-direction: row;
         /* justify-content: start; */
         align-items: center;
     }
-    .nav-item{
+
+    .nav-item {
         display: flex;
     }
-    .modal{
+
+    .modal {
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
     }
-    section{
-        grid-column: 1/2;  
+
+    section {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        display: flex;
+        flex-direction: column;
+         justify-content: space-around; 
+        align-items: center;
+        background: #f7f7f7;
+    }
+
+    main {
+        grid-column: 2/3;
         grid-row: 2/3;
     }
-    main{
-        grid-column: 2/3;  
+
+    aside {
+        grid-column: 3/-1;
         grid-row: 2/3;
+
     }
-    aside{
-        grid-column: 3/-1;  
-        grid-row: 2/3;
-    }
-    footer{
-        grid-column: 1/-1;  
-        grid-row: 3/-1;
-    }
- /*   .carousel-item {
+
+
+
+    /*   .carousel-item {
         width: auto;
         height: 79vh;
         min-height: 300px;
@@ -139,7 +182,5 @@ footer{
         -o-background-size: cover;
         background-size: cover;
       }  */
-    
+
 }
-
-

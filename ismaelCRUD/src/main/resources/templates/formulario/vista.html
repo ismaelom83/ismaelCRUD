@@ -25,27 +25,29 @@
 		href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
 	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 	
-	<!-- Nuestro css-->
-	<link rel="stylesheet" type="text/css" href="static/css/formularioUsuario.css"
-		th:href="@{/css/formularioUsuario.css}">
+	
+	
+
 
 	<!-- DATA TABLE -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">	
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-	<!-- Funcion sacada de la libreria de database para realizar paginaciones y filtrado de datos-->
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$('#userList').DataTable();
-		});
+	
+			<!-- Nuestro css-->
+	<link rel="stylesheet" type="text/css" href="static/css/formularioUsuario.css"
+		th:href="@{/css/formularioUsuario.css}">
+
+	<script type="text/javascript" src="js/index.js">
 	</script>
+
 </head>
 
 <body>
-	<header>
+	<div class="wraper2">	
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">IsmaelCrud</a>
+			<a class="navbar-brand" href="#">SPRING BOOT CRUD</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -61,12 +63,11 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" th:classappend="${formTab}" id="form-tab" data-toggle="tab" href="#form"
-							role="tab" aria-controls="form" aria-selected="true">Formulario Para Usuarios</a>
+							role="tab" aria-controls="form" aria-selected="true">Registro de usuarios</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
-	</header>
 	<main>
 		<div class="container">
 			<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
@@ -82,7 +83,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane fade show miformulario1" th:classappend="${formTab}" id="form" role="tabpanel"
+					<div class="tab-pane cabecera-formulario fade show miformulario1" th:classappend="${formTab}" id="form" role="tabpanel"
 						aria-labelledby="form-tab">
 						<div class="card bg-dark text-light">
 							<div class="card-header">
@@ -97,53 +98,21 @@
 			</div>
 		</div>
 	</main>
-	<!-- Footer -->
-	<footer class="page-footer font-small  bg-dark pt-4 sticky-bottom ">
+               <footer>
+           
+                <li>Condiciones de uso</li>
+                <li>Privacidad</li>
+                <li>Cookies</li>
+                <li>&copy;2020 Ismael Heras Salvador.Derechos Reservados</li>
+                <div class="icons">
+                    <img src="img/twitter.png" alt="">
+                    <img src="img/facebook.png" alt="">
+                    <img src="img/instagram.png" alt="">
+                    <img src="img/youtube.png" alt="">
+                </div>
 
-		<!-- Footer Elements -->
-		<div class="container">
-
-			<!-- Social buttons -->
-			<ul class="list-unstyled list-inline text-center">
-				<li class="list-inline-item">
-					<a class="btn-floating btn-fb mx-1">
-						<i class="fab fa-facebook-f"> </i>
-					</a>
-				</li>
-				<li class="list-inline-item">
-					<a class="btn-floating btn-tw mx-1">
-						<i class="fab fa-twitter"> </i>
-					</a>
-				</li>
-				<li class="list-inline-item">
-					<a class="btn-floating btn-gplus mx-1">
-						<i class="fab fa-google-plus-g"> </i>
-					</a>
-				</li>
-				<li class="list-inline-item">
-					<a class="btn-floating btn-li mx-1">
-						<i class="fab fa-linkedin-in"> </i>
-					</a>
-				</li>
-				<li class="list-inline-item">
-					<a class="btn-floating btn-dribbble mx-1">
-						<i class="fab fa-dribbble"> </i>
-					</a>
-				</li>
-			</ul>
-			<!-- Social buttons -->
-
+		</footer>
 		</div>
-		<!-- Footer Elements -->
-
-		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">© 2020 Copyright:
-			<a href="#"> Ismael Heras Salvador</a>
-		</div>
-		<!-- Copyright -->
-
-	</footer>
-	<!-- Footer -->
 	<div th:include="formulario/borrarUsuario.html" th:remove="tag"></div>
 </body>
 
