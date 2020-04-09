@@ -10,9 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.ismaelCRUD.servicio.LoginUsuario;
-import com.ismaelCRUD.servicio.ServicioUsuario;
-
 //clase que utilizamos para sobrescribir los ajustes que vienen por defecto en spring security.
 @Configuration
 @EnableWebSecurity
@@ -20,7 +17,7 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
 	// areglo donde nombramos las carpetas que en el siguiente metodo le damos
 	// permiso para entrar si no no nos cargaria el js nilos css ni las imagenes
-	String[] resources = new String[] { "/css/**", "/img/**", "/js/**" };
+	String[] resources = new String[] { "/css/**", "/img/**", "/js/**", "/DOC/**" };
 
 	// metodo que se sobrescribe de la clase extendida de spring y modificamos los
 	// parametros de seguridad como queramos

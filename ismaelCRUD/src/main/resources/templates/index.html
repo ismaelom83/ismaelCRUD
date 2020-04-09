@@ -1,172 +1,225 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
-    <title>SPRING BOOT CRUD</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+  <title>SPRING BOOT CRUD</title>
 </head>
+
 <body>
-    <div class="wraper">
-        <!--  --------------------------------nav---------------------------------------- -->
+  <div class="wraper">
+    <!--  --------------------------------nav---------------------------------------- -->
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">SPRING BOOT CRUD</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">API SPRING BOOT</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">QUE ES SPRING BOOT</a>
-                </li>
-              </ul>
-              <!--  --------------------------------login---------------------------------------- -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">SPRING BOOT CRUD</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">API SPRING BOOT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">QUE ES SPRING BOOT</a>
+          </li>
+        </ul>
+        <!--  --------------------------------login---------------------------------------- -->
 
-              <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                      <form class="col-12" th:action="@{/index}" method="POST">
-                    <div class="form-group" id="user-group">
-                        <label class="col col-form-label form-control-label">NombreUsuario</label><br>
-                        <input type="text" class="form-control" placeholder="NombreUsuario" name="nombreusuario"/>
-                    </div>
-                    <div class="form-group" id="contrasena-group">
-                        <label class="col col-form-label form-control-label">Password</label><br>
-                        <input type="password" class="form-control" placeholder="Introduce password" name="password"/>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn btn-default">Login</button>
-                  </div>
-                </form>
-              
-                <div th:if="${param.error}" class="alert alert-danger" role="alert">
-		           Credenciales No Validos.
-		        </div> 
-		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
-		            Sesion de Usuario Cerrada.
-		        </div>
-                  
-                </div>
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+              <form class="col-12" th:action="@{/index}" method="POST">
+                <div class="form-group" id="user-group">
+                  <label class="col col-form-label form-control-label">NombreUsuario</label><br>
+                  <input type="text" class="form-control" placeholder="NombreUsuario" name="nombreusuario" />
+                </div>
+                <div class="form-group" id="contrasena-group">
+                  <label class="col col-form-label form-control-label">Password</label><br>
+                  <input type="password" class="form-control" placeholder="Introduce password" name="password" />
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button class="btn btn-default">Login</button>
+                </div>
+              </form>
+
+              <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                Credenciales No Validos.
+              </div>
+              <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                Sesion de Usuario Cerrada.
+              </div>
+
             </div>
-            
-            <div class="text-center">
-              <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">SingIn</a>
-               <a href="" class="btn btn-default btn-rounded mb-4"  th:href="@{registro}">SingUp</a>
-            </div>
-            </div>
-          </nav>
+          </div>
+        </div>
 
-          <!-- ----------------------------------------------section-------------------------- -->
-        <section>
-          <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">Spring Security</a>
-          <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">Spring Data</a>
-          <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">JPA</a>
-          <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">Hibernate</a>
-
-
-
-<div class="modal fade bd-example-modal-lg" id="springSecurity" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <h1>Spring Security </h1><hr>
-      <div class="">
-        <p>esta tecnologia la implementa spring boot para la seguridad de nuestra WEB si quieres saber mas <a href="https://spring.io/projects/spring-security" target="_blank">pincha en este enlace</a></p>
+        <div class="text-center">
+          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
+            data-target="#modalLoginForm">SingIn</a>
+          <a href="" class="btn btn-default btn-rounded mb-4" th:href="@{registro}">SingUp</a>
+        </div>
       </div>
-    </div>
+    </nav>
+
+    <!-- ---->
+      <div class="enlacesmios link-fadeinbg">
+        <a href="#" class="modalSpringSecurity" th:onclick="'javascript:modalSpringSecurity();'">Documentacion</a>
+        <a href="#" class="modalSpringSecurity" th:onclick="'javascript:gitHub();'">GitHub</a>
+        <a href="#" class="modalSpringSecurity" th:onclick="">JavaDoc</a>
+        <a href="#" class="modalSpringSecurity" th:onclick="">PowerPoint</a>
+        
+      </div>
+
+
+      <!-- ----------------------------------------------modal de documentacion-------------------------- -->
+
+      <div class="modal" id="springSecurity" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Documentacion del proyecto</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>La documentacion es una parte muy importante del proyecto, la siguiente documentacion detalla todas las
+                herramientas
+                utilizadas para realizar el CRUD con SPRING BOOT y su utilidad, tambien explicamos que es SPRING BOOT y
+                para que se utiliza
+                .</p>
+            </div>
+            <div class="modal-footer">
+              <a class="btn btn-primary text-white" target="_blank" th:href="@{/DOC/proyectoIsmael.pdf}">Ir a
+                Documentacion</a>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ----------------------------------------------modal de gitHub-------------------------- -->
+
+      <div class="modal" id="myGitHub" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Mi Proyecto en GitHub</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Los repositorios de codigo en la actualidad son una herramienta imprescindible en el desrrollo de
+                software,
+                tanto a nivel coloaborativo en las empresas como a nivel individual del programador, casi todos los
+                developers tienen sus proyectos
+                en los repositorios de GitHub, el mas utilizado y como no podia ser de otra manera nuestro proyecto esta
+                en gitHub para que todo el undo piueda ver el codigo.</p>
+            </div>
+            <div class="modal-footer">
+              <a class="btn btn-primary text-white" target="_blank"
+                href="https://github.com/ismaelom83/ismaelCRUD/tree/developer/ismaelCRUD">Ver proyecto en GitHub</a>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!--  --------------------------------main---------------------------------------- -->
+
+    <main>
+      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="background-image: url('img/s1.jpg');">
+            <!-- <img src="img/s1.jpg" class="d-block img-fluid" alt="..."> -->
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('img/s2.jfif');">
+            <!-- <img src="img/s2.jfif" class="d-block img-fluid" alt="..."> -->
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('img/s3.jfif');">
+            <!--  <img src="img/s3.jfif" class="d-block img-fluid" alt="..."> -->
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </main>
+    <aside></aside>
+    <!--  --------------------------------footer---------------------------------------- -->
+    <footer>
+
+      <li>Condiciones de uso</li>
+      <li>Privacidad</li>
+      <li>Cookies</li>
+      <li>&copy;2020 Ismael Heras Salvador.Derechos Reservados</li>
+      <div class="icons">
+        <img src="img/twitter.png" alt="">
+        <img src="img/facebook.png" alt="">
+        <img src="img/instagram.png" alt="">
+        <img src="img/youtube.png" alt="">
+      </div>
+
+    </footer>
   </div>
-</div>
-        </section>
-
-        <!--  --------------------------------main---------------------------------------- -->
-
-        <main>
-            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active" style="background-image: url('img/s1.jpg');">
-                    <!-- <img src="img/s1.jpg" class="d-block img-fluid" alt="..."> -->
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>First slide label</h5>
-                      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item" style="background-image: url('img/s2.jfif');">
-                    <!-- <img src="img/s2.jfif" class="d-block img-fluid" alt="..."> -->
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Second slide label</h5>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item" style="background-image: url('img/s3.jfif');">
-                   <!--  <img src="img/s3.jfif" class="d-block img-fluid" alt="..."> -->
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Third slide label</h5>
-                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </div>
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-        </main>
-        <aside></aside>
-<!--  --------------------------------footer---------------------------------------- -->
-               <footer>
-           
-                <li>Condiciones de uso</li>
-                <li>Privacidad</li>
-                <li>Cookies</li>
-                <li>&copy;2020 Ismael Heras Salvador.Derechos Reservados</li>
-                <div class="icons">
-                    <img src="img/twitter.png" alt="">
-                    <img src="img/facebook.png" alt="">
-                    <img src="img/instagram.png" alt="">
-                    <img src="img/youtube.png" alt="">
-                </div>
-
-        </footer>
-    </div>
-	<script type="text/javascript">
-function modalSpringSecurity(){
-	$('#springSecurity').modal('show');
-}
-</script>
+  <script type="text/javascript">
+    function modalSpringSecurity() {
+      $('#springSecurity').modal('show');
+    }
+  </script>
+  <script type="text/javascript">
+    function gitHub() {
+      $('#myGitHub').modal('show');
+    }
+  </script>
 </body>
+
 </html>
-
-
