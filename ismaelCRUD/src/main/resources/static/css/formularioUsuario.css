@@ -5,7 +5,7 @@
 }
 
 body {
-    background: url(../img/puerta84.jpg) no-repeat center center fixed;
+    background: url(../img/fondospringboot.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -32,7 +32,7 @@ main {
 footer {
     grid-column: 1/-1;
     grid-row: 3/-1;
-    background-color: #9DA8C3;
+     background-color: #f7f7f7;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -46,17 +46,15 @@ footer li {
     display: inline-block;
 }
 
-.icons>img {
-    padding: 5px;
+#social {
     max-width: 42px;
 }
 
-.icons>img:hover {
+#social:hover {
     cursor: pointer;
     opacity: 0.5;
     transform: scale(1.2);
 }
-
 
 .navbar-nav {
     padding: 5px;
@@ -108,4 +106,25 @@ label {
     border-bottom: 0px;
 }
 
+/*---------------------------------------estilo enlaces------------------------------------------------------*/
+
+
+
+.link-fadeinbg {
+    background: rgba(149, 165, 166, 0.1);
+}
+
+.link-fadeinbg a {
+    color: black;
+    border-bottom: 1px solid rgba(52, 73, 94, 0.4);
+    font-weight: 500;
+    -webkit-transition: background-color 0.3s, border-color 0.3s;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.link-fadeinbg a:hover,
+.link-fadeinbg a:focus {
+    border-color: rgba(52, 73, 94, 0);
+    background-color: rgba(52, 73, 94, 0.1);
+}
 
