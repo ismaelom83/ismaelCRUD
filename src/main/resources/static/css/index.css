@@ -5,7 +5,8 @@
 }
 
 .wraper {
-    height: 100vh;
+
+    height: 99vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 10fr 8fr 64fr 10fr 8fr;
